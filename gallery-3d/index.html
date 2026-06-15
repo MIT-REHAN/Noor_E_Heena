@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Immersive Gallery | Noor_e_Heena</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#f3e5ab',
+                            DEFAULT: '#d4af37',
+                            dark: '#aa8c2c',
+                        },
+                        henna: '#4a2c11',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white font-sans overflow-hidden select-none">
+
+    <!-- 3D Gallery Viewport -->
+    <div id="gallery-viewport" class="relative w-screen h-screen">
+        
+        <!-- Background Tunnel Radial Gradient -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#203d27_0%,_#09110b_100%)] z-0 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-black/40 z-1 pointer-events-none"></div>
+
+        <!-- 3D Perspective Tunnel Container -->
+        <div id="tunnel-container" class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+            <!-- Floating cards will be rendered dynamically here -->
+        </div>
+
+        <!-- Foreground Glassmorphic HUD overlay -->
+        <div class="absolute inset-0 z-20 flex flex-col justify-between p-8 pointer-events-none">
+            <!-- Header -->
+            <div class="flex justify-between items-center w-full">
+                <a href="../index.html" class="flex items-center gap-3 pointer-events-auto group">
+                    <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center bg-black/60 backdrop-blur-md transition-all group-hover:border-gold">
+                        <i class="fas fa-arrow-left text-gold group-hover:text-white transition-colors"></i>
+                    </div>
+                    <span class="font-serif text-lg tracking-wider text-gold group-hover:text-white transition-colors">Noor_e_Heena</span>
+                </a>
+                <div class="px-4 py-2 bg-black/50 backdrop-blur-md border border-white/10 rounded-full font-mono text-[10px] tracking-widest text-white/60 pointer-events-auto">
+                    3D VIEW
+                </div>
+            </div>
+
+            <!-- Central Title Banner -->
+            <div class="text-center my-auto">
+                <h1 class="font-serif text-4xl md:text-7xl tracking-wide text-white/90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                    Bridal <span class="text-gold italic font-light">Mehendi</span> Designs
+                </h1>
+                <p class="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase text-white/50 mt-4 max-w-md mx-auto drop-shadow-md">
+                    Scroll, Swipe or Use Arrow Keys
+                </p>
+                <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
+            </div>
+
+            <!-- Footer navigation guides -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full text-[11px] font-mono tracking-wider text-white/40">
+                <div class="flex items-center gap-4">
+                    <span class="flex items-center gap-2"><i class="fas fa-mouse text-gold"></i> WHEEL SCROLL</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-arrows-alt text-gold"></i> ARROW KEYS</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-fingerprint text-gold"></i> TOUCH SWIPE</span>
+                </div>
+                <div class="text-right">
+                    AUTO-PLAY ACTIVE (RESUMES IN 3s)
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript logic -->
+    <script src="js/gallery.js"></script>
+</body>
+</html>

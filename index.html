@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Noor_e_Heena | Premium Bridal & Custom Mehendi Artist</title>
+    <meta name="description" content="Elevate your special day with Noor_e_Heena. Specialized bridal, engagement, festive, and custom henna designs crafted with premium natural henna, precision, and love. Book your mehendi session today.">
+    <meta name="keywords" content="mehendi artist, bridal henna, custom mehendi, wedding henna, engagement mehendi, Arabic mehendi, Indian mehendi, premium henna artist">
+    <meta name="author" content="Noor_e_Heena">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Noor_e_Heena | Premium Bridal & Custom Mehendi Artist">
+    <meta property="og:description" content="Elegant and intricate handcrafted henna designs. Experience premium natural henna, bridal masterpieces, and personalized artistry.">
+    <meta property="og:image" content="assets/bridal_hands.png">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="main-header" class="header-transparent">
+        <div class="container nav-container">
+            <a href="#home" class="logo-area" id="logo-link">
+                <img src="noor_hena_logo.jpeg" alt="Noor_e_Heena Logo" class="brand-logo" id="brand-logo-img">
+                <span class="brand-name">Noor_e_Heena</span>
+            </a>
+            
+            <nav class="nav-menu" id="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/919999999999?text=Hello%20Noor_e_Heena,%20I%20would%20like%20to%20book%20a%20mehendi%20session!" target="_blank" class="nav-btn-whatsapp" id="nav-whatsapp-btn" title="Contact on WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#booking" class="btn btn-gold nav-btn-book" id="nav-book-btn">Book Now</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <button class="close-drawer-btn" id="close-drawer-btn" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#services" class="mobile-nav-link">Services</a></li>
+            <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+            <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-drawer-actions">
+            <a href="#booking" class="btn btn-gold" id="mobile-drawer-book-btn">Book Now</a>
+            <a href="https://wa.me/919999999999?text=Hello%20Noor_e_Heena!" target="_blank" class="btn btn-whatsapp-full" id="mobile-drawer-wa-btn">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background-pattern"></div>
+            <div class="hero-sticky-container">
+                <!-- Full Screen Background Canvas -->
+                <canvas id="hero-animation-canvas"></canvas>
+                <div class="canvas-fallback-image">
+                    <img src="assets/bridal_hands.png" alt="Bridal Mehendi Detail">
+                </div>
+                
+                <!-- Subtle dark vignette overlay for typography readability -->
+                <div class="hero-vignette-overlay"></div>
+
+                <!-- Left-aligned Hero Content Overlay -->
+                <div class="container hero-content-left">
+                    <div class="hero-text-wrapper fade-in-up">
+                        <span class="label-accent" id="hero-mini-label">Professional Mehendi Artist</span>
+                        <h1 class="hero-title">Creating Beautiful <br><span class="text-gold">Mehendi Memories</span></h1>
+                        <p class="hero-description">
+                            Bridal, Engagement, Festive, and Custom Mehendi Designs crafted with precision, creativity, and passion.
+                        </p>
+                        <div class="hero-ctas">
+                            <a href="#gallery" class="hero-primary-link" id="hero-primary-cta">View Gallery <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Immersive 3D Gallery Section -->
+        <section id="immersive-gallery" class="immersive-gallery-section">
+            <div class="immersive-gallery-sticky">
+                <!-- Background Tunnel -->
+                <div class="immersive-gallery-bg"></div>
+                <!-- 3D Perspective Tunnel Container -->
+                <div id="immersive-tunnel" class="immersive-tunnel-container">
+                    <!-- Floating cards will be rendered dynamically here via main.js -->
+                </div>
+                <!-- Overlay instructions -->
+                <div class="immersive-gallery-hud">
+                    <span class="hud-guide font-mono text-[10px] tracking-widest text-white/50">SCROLL TO EXPLORE 3D MEHENDI GALLERY</span>
+                    <div class="hud-scroll-indicator">
+                        <span class="mouse-scroll-ball"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Noor_e_Heena Section -->
+        <section id="about" class="about-section scroll-reveal">
+            <div class="container about-container">
+                <!-- Left Column: Portrait -->
+                <div class="about-left-col">
+                    <div class="portrait-frame">
+                        <div class="portrait-background-decor"></div>
+                        <img src="assets/noor_portrait.png" alt="Noor - Professional Mehendi Artist" class="portrait-img" id="about-portrait-img">
+                    </div>
+                </div>
+                
+                <!-- Right Column: Text & Biography -->
+                <div class="about-right-col">
+                    <span class="section-subtitle">The Artist Behind the Henna</span>
+                    <h2 class="section-title">Meet Noor</h2>
+                    <p class="about-intro">
+                        At Noor_e_Heena, every design tells a story. With a passion for intricate artistry and years of experience, Noor creates personalized mehendi designs that celebrate love, tradition, and life's most beautiful moments.
+                    </p>
+                    <p class="about-details">
+                        From bridal masterpieces to festive celebrations, each design is crafted with attention to detail and a commitment to excellence. We use only premium organic, chemical-free henna to ensure a rich, dark, and long-lasting color.
+                    </p>
+                    
+                    <div class="about-highlights-grid">
+                        <div class="highlight-bullet">
+                            <div class="bullet-icon"><i class="fas fa-crown"></i></div>
+                            <div>
+                                <h4>Bridal Specialist</h4>
+                                <p>Exquisite detailed patterns from traditional to contemporary layout.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-bullet">
+                            <div class="bullet-icon"><i class="fas fa-pen-nib"></i></div>
+                            <div>
+                                <h4>Custom Designs</h4>
+                                <p>Incorporating wedding stories, portraits, and personalized motifs.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-bullet">
+                            <div class="bullet-icon"><i class="fas fa-leaf"></i></div>
+                            <div>
+                                <h4>Natural Henna</h4>
+                                <p>100% organic, handmade henna paste for dark stains and skin safety.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-bullet">
+                            <div class="bullet-icon"><i class="fas fa-car-side"></i></div>
+                            <div>
+                                <h4>Home Service Available</h4>
+                                <p>Enjoy professional mehendi services at the comfort of your home.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section scroll-reveal">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Exquisite Handcrafted Offerings</span>
+                    <h2 class="section-title">Our Signature Services</h2>
+                    <div class="title-divider"></div>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1: Bridal Mehendi -->
+                    <div class="service-card" id="service-bridal">
+                        <div class="service-img-wrapper">
+                            <img src="assets/bridal_hands.png" alt="Bridal Mehendi" class="service-img">
+                            <div class="service-badge">Most Popular</div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Bridal Mehendi</h3>
+                            <p>Intricate full-hand & foot designs, portraits, and customized storytelling henna details for your big day.</p>
+                            <div class="service-footer">
+                                <span class="starting-price">Starting from <span class="price-val">$250</span></span>
+                                <a href="#booking" class="btn btn-gold btn-sm service-book-btn" data-service="Bridal Mehendi">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Engagement Mehendi -->
+                    <div class="service-card" id="service-engagement">
+                        <div class="service-img-wrapper">
+                            <img src="assets/engagement_design.png" alt="Engagement Mehendi" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <h3>Engagement Mehendi</h3>
+                            <p>Elegant, modern designs for hands that perfectly complement your engagement rings and attire.</p>
+                            <div class="service-footer">
+                                <span class="starting-price">Starting from <span class="price-val">$120</span></span>
+                                <a href="#booking" class="btn btn-gold btn-sm service-book-btn" data-service="Engagement Mehendi">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Party & Festival Mehendi -->
+                    <div class="service-card" id="service-party">
+                        <div class="service-img-wrapper">
+                            <img src="assets/festival_design.png" alt="Party & Festival Mehendi" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <h3>Party & Festival Mehendi</h3>
+                            <p>Delightful design styles for festivals like Eid, Diwali, Karwa Chauth, or group guest events.</p>
+                            <div class="service-footer">
+                                <span class="starting-price">Starting from <span class="price-val">$50</span></span>
+                                <a href="#booking" class="btn btn-gold btn-sm service-book-btn" data-service="Party & Festival Mehendi">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Arabic Mehendi -->
+                    <div class="service-card" id="service-arabic">
+                        <div class="service-img-wrapper">
+                            <img src="assets/arabic_design.png" alt="Arabic Mehendi" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <h3>Arabic Mehendi</h3>
+                            <p>Elegant flowing vines, floral trails, and modern minimalist layouts with bold shading styles.</p>
+                            <div class="service-footer">
+                                <span class="starting-price">Starting from <span class="price-val">$80</span></span>
+                                <a href="#booking" class="btn btn-gold btn-sm service-book-btn" data-service="Arabic Mehendi">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 5: Traditional Indian Mehendi -->
+                    <div class="service-card" id="service-traditional">
+                        <div class="service-img-wrapper">
+                            <img src="assets/traditional_indian.png" alt="Traditional Indian Mehendi" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <h3>Traditional Indian Mehendi</h3>
+                            <p>Classic designs featuring paisleys, peacocks, chequered fillers, mandalas, and full dense patterns.</p>
+                            <div class="service-footer">
+                                <span class="starting-price">Starting from <span class="price-val">$100</span></span>
+                                <a href="#booking" class="btn btn-gold btn-sm service-book-btn" data-service="Traditional Indian Mehendi">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 6: Customized Event Mehendi -->
+                    <div class="service-card" id="service-custom">
+                        <div class="service-img-wrapper">
+                            <img src="assets/detail_shot.png" alt="Customized Event Mehendi" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <h3>Customized Event Mehendi</h3>
+                            <p>Bespoke artwork incorporating specific symbols, dates, quotes, names, or corporate brand elements.</p>
+                            <div class="service-footer">
+                                <span class="starting-price">Starting from <span class="price-val">$150</span></span>
+                                <a href="#booking" class="btn btn-gold btn-sm service-book-btn" data-service="Customized Event Mehendi">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio / Gallery Section -->
+        <section id="gallery" class="gallery-section scroll-reveal">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">A Showcase of Our Artistry</span>
+                    <h2 class="section-title">Featured Mehendi Designs</h2>
+                    <div class="title-divider"></div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="gallery-filters" id="gallery-filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All Designs</button>
+                    <button class="filter-tab" data-filter="bridal-hands">Bridal Hands</button>
+                    <button class="filter-tab" data-filter="bridal-feet">Bridal Feet</button>
+                    <button class="filter-tab" data-filter="arabic">Arabic Designs</button>
+                    <button class="filter-tab" data-filter="engagement">Engagement</button>
+                    <button class="filter-tab" data-filter="festival">Festival & Guest</button>
+                    <button class="filter-tab" data-filter="details">Close-Ups</button>
+                </div>
+
+                <!-- Masonry Grid -->
+                <div class="gallery-grid" id="gallery-masonry-grid">
+                    
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-item" data-category="bridal-hands">
+                        <div class="gallery-image-box">
+                            <img src="assets/bridal_hands.png" alt="Elegant Bridal Hands Mehendi">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-item-category">Bridal Hands</span>
+                                <h4 class="gallery-item-title">Royal Bridal Masterpiece</h4>
+                                <div class="gallery-zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-item" data-category="bridal-feet">
+                        <div class="gallery-image-box">
+                            <img src="assets/bridal_feet.png" alt="Intricate Bridal Feet Mehendi">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-item-category">Bridal Feet</span>
+                                <h4 class="gallery-item-title">Traditional Feet Henna</h4>
+                                <div class="gallery-zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-item" data-category="arabic">
+                        <div class="gallery-image-box">
+                            <img src="assets/arabic_design.png" alt="Flowing Arabic Henna Vine">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-item-category">Arabic Designs</span>
+                                <h4 class="gallery-item-title">Contemporary Floral Vine</h4>
+                                <div class="gallery-zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-item" data-category="engagement">
+                        <div class="gallery-image-box">
+                            <img src="assets/engagement_design.png" alt="Elegant Engagement Henna">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-item-category">Engagement</span>
+                                <h4 class="gallery-item-title">Ring Ceremony Detail</h4>
+                                <div class="gallery-zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5 -->
+                    <div class="gallery-item" data-category="festival">
+                        <div class="gallery-image-box">
+                            <img src="assets/festival_design.png" alt="Vibrant Festive Henna Party">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-item-category">Festival & Guest</span>
+                                <h4 class="gallery-item-title">Karwa Chauth Celebration</h4>
+                                <div class="gallery-zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 6 -->
+                    <div class="gallery-item" data-category="details">
+                        <div class="gallery-image-box">
+                            <img src="assets/detail_shot.png" alt="Detailed Mehendi Close-up">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-item-category">Close-Ups</span>
+                                <h4 class="gallery-item-title">Precision Macro Pattern</h4>
+                                <div class="gallery-zoom-icon"><i class="fas fa-expand-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Gallery Modal -->
+        <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true">
+            <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close Lightbox"><i class="fas fa-times"></i></button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Previous Image"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Next Image"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-content">
+                <img src="" alt="" class="lightbox-img" id="lightbox-img-el">
+                <div class="lightbox-caption">
+                    <span class="lightbox-category" id="lightbox-category-el">Category</span>
+                    <h4 class="lightbox-title" id="lightbox-title-el">Design Title</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Noor_e_Heena Section -->
+        <section class="why-choose-section scroll-reveal">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">What Sets Us Apart</span>
+                    <h2 class="section-title">Why Clients Love Noor_e_Heena</h2>
+                    <div class="title-divider"></div>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-col">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Artistic Excellence</h3>
+                        <p>Intricate handcrafted designs tailored to every client. Our patterns combine traditional heritage with modern aesthetics for absolute perfection.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-col">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Premium Natural Henna</h3>
+                        <p>We use high-quality organic henna mixed by hand with pure essential oils, ensuring a rich, dark maroon color stain that is safe for all skin types.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-col">
+                        <div class="feature-icon-circle">
+                            <i class="fas fa-user-heart"></i>
+                        </div>
+                        <h3>Personalized Experience</h3>
+                        <p>Designs customized to match your individual style, wedding theme, and attire. We listen to your stories and weave them into your henna.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section scroll-reveal">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Real Reviews from Real Brides</span>
+                    <h2 class="section-title">Words From Our Happy Clients</h2>
+                    <div class="title-divider"></div>
+                </div>
+
+                <!-- Testimonial Slider -->
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider" id="testimonial-slider-track">
+                        
+                        <!-- Slide 1 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Noor did my bridal mehendi, and it was absolute perfection! She spent hours with such dedication and precision. Everyone complimented the details, and the stain color was a deep, beautiful mahogany."
+                            </p>
+                            <div class="testimonial-client">
+                                <img src="assets/noor_portrait.png" alt="Aisha Khan" class="client-avatar">
+                                <div class="client-info">
+                                    <h4 class="client-name">Aisha Khan</h4>
+                                    <span class="client-event">Bridal Client (Dec 2025)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Absolutely loved the Arabic pattern Noor created for my engagement ceremony. It was minimalist yet so striking. The organic henna smelled divine and lasted for almost two weeks!"
+                            </p>
+                            <div class="testimonial-client">
+                                <img src="assets/arabic_design.png" alt="Priya Sharma" class="client-avatar">
+                                <div class="client-info">
+                                    <h4 class="client-name">Priya Sharma</h4>
+                                    <span class="client-event">Engagement Client (Feb 2026)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Booked Noor_e_Heena for our Eid gathering. She handled 10 guests so professionally, creating beautiful custom patterns for everyone. Extremely polite, fast, and remarkably talented!"
+                            </p>
+                            <div class="testimonial-client">
+                                <img src="assets/festival_design.png" alt="Zahra Ahmed" class="client-avatar">
+                                <div class="client-info">
+                                    <h4 class="client-name">Zahra Ahmed</h4>
+                                    <span class="client-event">Festive Guest Group (Eid 2026)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slider Controls -->
+                    <div class="slider-controls">
+                        <button class="slider-arrow slider-prev" id="testimonial-prev-btn" aria-label="Previous Slide"><i class="fas fa-arrow-left"></i></button>
+                        <div class="slider-dots" id="testimonial-slider-dots">
+                            <span class="dot active" data-index="0"></span>
+                            <span class="dot" data-index="1"></span>
+                            <span class="dot" data-index="2"></span>
+                        </div>
+                        <button class="slider-arrow slider-next" id="testimonial-next-btn" aria-label="Next Slide"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking-section scroll-reveal">
+            <div class="container booking-container">
+                <div class="booking-left">
+                    <span class="label-accent">Reserve Your Date</span>
+                    <h2 class="booking-title">Book Your Mehendi Session</h2>
+                    <p class="booking-desc">
+                        Our slots fill up quickly, especially during wedding and festive seasons. Fill out the reservation request, and we will get back to you within 24 hours with custom quotes.
+                    </p>
+                    
+                    <div class="booking-info-box">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>contact@nooreheena.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>Instant Booking</h4>
+                                <p>+91 99999 99999</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Booking Button -->
+                    <div class="whatsapp-quick-box">
+                        <p>Want a faster response? Click to book directly on WhatsApp with pre-filled event details.</p>
+                        <a href="https://wa.me/919999999999?text=Hello%20Noor_e_Heena,%20I'm%20interested%20in%20booking%20your%20mehendi%20services.%20Please%20share%20your%20availability." target="_blank" class="btn btn-whatsapp" id="whatsapp-direct-link">
+                            <i class="fab fa-whatsapp"></i> Quick Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="booking-right">
+                    <div class="booking-form-wrapper">
+                        <form id="mehendi-booking-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="booking-name">Full Name <span class="text-gold">*</span></label>
+                                    <input type="text" id="booking-name" name="name" placeholder="Your full name" required>
+                                    <span class="error-message" id="name-error">Please enter your name</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-phone">Phone Number <span class="text-gold">*</span></label>
+                                    <input type="tel" id="booking-phone" name="phone" placeholder="Your phone number" required>
+                                    <span class="error-message" id="phone-error">Please enter a valid phone number</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="booking-email">Email Address <span class="text-gold">*</span></label>
+                                <input type="email" id="booking-email" name="email" placeholder="name@example.com" required>
+                                <span class="error-message" id="email-error">Please enter a valid email address</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="booking-service">Event Type <span class="text-gold">*</span></label>
+                                    <select id="booking-service" name="service" required>
+                                        <option value="" disabled selected>Select event type</option>
+                                        <option value="Bridal Mehendi">Bridal Mehendi</option>
+                                        <option value="Engagement Mehendi">Engagement Mehendi</option>
+                                        <option value="Party & Festival Mehendi">Party & Festival Mehendi</option>
+                                        <option value="Arabic Mehendi">Arabic Mehendi</option>
+                                        <option value="Traditional Indian Mehendi">Traditional Indian Mehendi</option>
+                                        <option value="Customized Event Mehendi">Customized Event Mehendi</option>
+                                    </select>
+                                    <span class="error-message" id="service-error">Please select an event type</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-date">Event Date <span class="text-gold">*</span></label>
+                                    <input type="date" id="booking-date" name="date" required>
+                                    <span class="error-message" id="date-error">Please choose a date</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="booking-location">Event Location / Venue <span class="text-gold">*</span></label>
+                                    <input type="text" id="booking-location" name="location" placeholder="City, Area or Hotel Venue" required>
+                                <span class="error-message" id="location-error">Please enter your location</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="booking-message">Special Requests / Message</label>
+                                <textarea id="booking-message" name="message" rows="4" placeholder="Share your design ideas, number of guests, or special patterns you'd like..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-gold btn-full submit-btn" id="submit-booking-btn">Reserve Your Date</button>
+                        </form>
+                        
+                        <!-- Success Feedback Overlay -->
+                        <div class="form-success-overlay" id="form-success-view">
+                            <div class="success-content">
+                                <div class="success-icon-circle"><i class="fas fa-check"></i></div>
+                                <h3>Booking Request Received!</h3>
+                                <p>Thank you for choosing Noor_e_Heena. We have recorded your preferences and will contact you via phone/email shortly with custom pricing options.</p>
+                                <a href="#" class="btn btn-gold" id="close-success-btn">Back to Form</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Closing CTA -->
+    <footer class="footer">
+        <div class="footer-cta-container">
+            <div class="container text-center">
+                <h2>Let's Make Your Special Day Even More Beautiful</h2>
+                <p>Secure your appointment today and bring your dream mehendi design to life.</p>
+                <a href="#booking" class="btn btn-gold" id="footer-cta-btn">Book Now</a>
+            </div>
+        </div>
+
+        <div class="container footer-links-grid">
+            <!-- Brand Column -->
+            <div class="footer-col-brand">
+                <a href="#home" class="footer-logo">
+                    <img src="noor_hena_logo.jpeg" alt="Noor_e_Heena Logo">
+                    <span>Noor_e_Heena</span>
+                </a>
+                <p>Intricate bridal henna and elegant bespoke mehendi artwork crafted for your lifetime celebrations.</p>
+                <div class="footer-social-links">
+                    <a href="https://instagram.com/noor_e_heena" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/919999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <!-- Services Links -->
+            <div class="footer-col-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Bridal Mehendi</a></li>
+                    <li><a href="#services">Engagement Mehendi</a></li>
+                    <li><a href="#services">Party & Festive Henna</a></li>
+                    <li><a href="#services">Arabic Designs</a></li>
+                    <li><a href="#services">Traditional Indian</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Noor</a></li>
+                    <li><a href="#gallery">Featured Gallery</a></li>
+                    <li><a href="#testimonials">Happy Clients</a></li>
+                    <li><a href="#booking">Book Appointment</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="footer-col-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Home Service available across Delhi NCR & Mumbai</p>
+                <p><i class="fas fa-phone-alt"></i> +91 99999 99999</p>
+                <p><i class="fas fa-envelope"></i> contact@nooreheena.com</p>
+                <p><i class="fas fa-clock"></i> Mon - Sun: 9:00 AM - 9:00 PM</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 Noor_e_Heena. All Rights Reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

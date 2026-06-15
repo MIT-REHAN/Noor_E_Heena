@@ -1,0 +1,93 @@
+/* 3D Gallery Stylesheet */
+
+#tunnel-container {
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Base style for the 3D floating gallery card */
+.gallery-card {
+    position: absolute;
+    width: 280px;
+    height: 380px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    transition: transform 0.1s ease-out, opacity 0.3s ease-out, filter 0.3s ease-out, border-color 0.3s ease;
+}
+
+/* Inner elements styling */
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+/* Card hover animation details */
+.gallery-card:hover {
+    border-color: #d4af37; /* Gold border on hover */
+    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-card:hover .gallery-card-overlay {
+    opacity: 1;
+}
+
+/* Soft floating keyframes to add micro-animations to planes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+/* Smooth glass overlay for header & footer */
+.glass-panel {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 2px;
+}
