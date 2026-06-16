@@ -2,19 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Default messages constant (not sensitive)
     const DEFAULT_MESSAGES = {
-        "Bridal Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Bridal Mehendi session.\n\nDescription: Intricate full-hand & foot designs, portraits, and customized storytelling henna details for your big day.\nStarting Price: $250\n\nPlease let me know your availability.",
-        "Engagement Mehendi": "Hello Noor_e_Heena,\n\nI would like to book an Engagement Mehendi session.\n\nDescription: Elegant, modern designs for hands that perfectly complement your engagement rings and attire.\nStarting Price: $120\n\nPlease let me know your availability.",
-        "Party & Festival Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Party & Festival Mehendi session.\n\nDescription: Delightful design styles for festivals like Eid, Diwali, Karwa Chauth, or group guest events.\nStarting Price: $50\n\nPlease let me know your availability.",
-        "Arabic Mehendi": "Hello Noor_e_Heena,\n\nI would like to book an Arabic Mehendi session.\n\nDescription: Elegant flowing vines, floral trails, and modern minimalist layouts with bold shading styles.\nStarting Price: $80\n\nPlease let me know your availability.",
-        "Traditional Indian Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Traditional Indian Mehendi session.\n\nDescription: Classic designs featuring paisleys, peacocks, chequered fillers, mandalas, and full dense patterns.\nStarting Price: $100\n\nPlease let me know your availability.",
-        "Customized Event Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Customized Event Mehendi session.\n\nDescription: Bespoke artwork incorporating specific symbols, dates, quotes, names, or corporate brand elements.\nStarting Price: $150\n\nPlease let me know your availability."
+        "Bridal Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Bridal Mehendi session.\n\nDescription: Intricate full-hand & foot designs, portraits, and customized storytelling henna details for your big day.\nStarting Price: ₹ 3,999\n\nPlease let me know your availability.",
+        "Engagement Mehendi": "Hello Noor_e_Heena,\n\nI would like to book an Engagement Mehendi session.\n\nDescription: Elegant, modern designs for hands that perfectly complement your engagement rings and attire.\nStarting Price: ₹ 2,499\n\nPlease let me know your availability.",
+        "Party & Festival Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Party & Festival Mehendi session.\n\nDescription: Delightful design styles for festivals like Eid, Diwali, Karwa Chauth, or group guest events.\nStarting Price: ₹ 899\n\nPlease let me know your availability.",
+        "Arabic Mehendi": "Hello Noor_e_Heena,\n\nI would like to book an Arabic Mehendi session.\n\nDescription: Elegant flowing vines, floral trails, and modern minimalist layouts with bold shading styles.\nStarting Price: ₹ 1,499\n\nPlease let me know your availability.",
+        "Traditional Indian Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Traditional Indian Mehendi session.\n\nDescription: Classic designs featuring paisleys, peacocks, chequered fillers, mandalas, and full dense patterns.\nStarting Price: ₹ 1,999\n\nPlease let me know your availability.",
+        "Customized Event Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Customized Event Mehendi session.\n\nDescription: Bespoke artwork incorporating specific symbols, dates, quotes, names, or corporate brand elements.\nStarting Price: ₹ 2,999\n\nPlease let me know your availability."
     };
 
     // Placeholder credentials (will be overwritten by env.json fetch)
     let ENV = {
         PRIMARY_WHATSAPP: "+919999999999",
         NOTIFICATION_WHATSAPP: "+919999999999",
-        BOOKING_EMAIL: "contact@nooreheena.com"
+        BOOKING_EMAIL: "contact@nooreheena.com",
+        INSTAGRAM_LINK: "https://www.instagram.com/nooor_e_heena/"
     };
 
     // Load credentials from the git-ignored local env.json file
@@ -68,6 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (footerWaLink) {
             footerWaLink.href = `https://wa.me/${primaryWANum}`;
         }
+
+        // Update Instagram links dynamically from env.json
+        const instagramLinks = document.querySelectorAll('a[href*="instagram.com"], a[aria-label="Instagram"]');
+        instagramLinks.forEach(link => {
+            link.href = ENV.INSTAGRAM_LINK;
+            link.target = '_blank';
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
     }
 
     // ==========================================
@@ -147,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15
+        threshold: 0.02
     });
 
     revealSections.forEach(section => {
@@ -176,6 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return `hero_landing_animations/ezgif-frame-${paddedNum}.jpg`;
         };
 
+        // Resize handler to adjust logical dimensions without layout thrashing
+        function resizeCanvas() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = Math.floor(canvas.clientWidth * dpr);
+            canvas.height = Math.floor(canvas.clientHeight * dpr);
+        }
+
         // Pre-load all 40 frames
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
@@ -184,6 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadedCount++;
                 if (loadedCount === frameCount) {
                     // Start rendering once all frames are loaded
+                    resizeCanvas();
+                    window.addEventListener('resize', () => {
+                        resizeCanvas();
+                        drawFrame(Math.round(currentFrameIndex));
+                    });
                     drawFrame(0);
                     initScrollAnimation();
                 }
@@ -199,21 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function drawFrame(index) {
             const clampIndex = Math.min(frameCount - 1, Math.max(0, index));
             if (images[clampIndex] && ctx) {
-                const rect = canvas.getBoundingClientRect();
-                // Cap DPR to 2 to prevent excessive scaling and memory usage while keeping it sharp
-                const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-                // Adjust logical dimensions to physical dimensions for crispness (Retina)
-                if (canvas.width !== Math.floor(rect.width * dpr) || canvas.height !== Math.floor(rect.height * dpr)) {
-                    canvas.width = Math.floor(rect.width * dpr);
-                    canvas.height = Math.floor(rect.height * dpr);
-                }
-
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // Set image smoothing quality after resizing/clearing canvas context
+                // Medium image smoothing quality balances crispness and rendering speed
                 ctx.imageSmoothingEnabled = true;
-                ctx.imageSmoothingQuality = 'high';
+                ctx.imageSmoothingQuality = 'medium';
 
                 const img = images[clampIndex];
                 const canvasAspect = canvas.width / canvas.height;
@@ -257,6 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetFrame = animProgress * (frameCount - 1);
             }
 
+            let autoScrollTimeout = null;
+            let hasAutoScrolled = false;
+
             // Continuous loop to interpolate frames smoothly and prevent jitter
             function animationLoop() {
                 const diff = targetFrame - currentFrameIndex;
@@ -264,6 +278,43 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentFrameIndex += diff * damping;
                     drawFrame(Math.round(currentFrameIndex));
                 }
+
+                // Wait 1.5 seconds after finishing the last frame, then auto-scroll to next section
+                if (Math.round(currentFrameIndex) >= frameCount - 1) {
+                    const rect = heroSection.getBoundingClientRect();
+                    // Pinned animation occurs when the hero section is in view, and scroll has not scrolled past the pinning range (+100px buffer)
+                    const inRange = rect.bottom > 0 && window.scrollY < (rect.height - window.innerHeight + 100);
+
+                    if (inRange) {
+                        if (!hasAutoScrolled && !autoScrollTimeout) {
+                            autoScrollTimeout = setTimeout(() => {
+                                const rectNow = heroSection.getBoundingClientRect();
+                                const inRangeNow = rectNow.bottom > 0 && window.scrollY < (rectNow.height - window.innerHeight + 100);
+                                if (inRangeNow) {
+                                    const nextSection = document.getElementById('services');
+                                    if (nextSection) {
+                                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                                        hasAutoScrolled = true;
+                                    }
+                                }
+                            }, 1500); // 1.5 seconds delay
+                        }
+                    } else {
+                        // User swiped down very fast past the landing page, cancel the timeout immediately
+                        if (autoScrollTimeout) {
+                            clearTimeout(autoScrollTimeout);
+                            autoScrollTimeout = null;
+                        }
+                    }
+                } else {
+                    // Reset if the user scrolls back up
+                    if (autoScrollTimeout) {
+                        clearTimeout(autoScrollTimeout);
+                        autoScrollTimeout = null;
+                    }
+                    hasAutoScrolled = false;
+                }
+
                 requestAnimationFrame(animationLoop);
             }
 
@@ -401,8 +452,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showLightboxImage(itemEl) {
         const img = itemEl.querySelector('img');
-        const title = itemEl.querySelector('.gallery-item-title').textContent;
-        const category = itemEl.querySelector('.gallery-item-category').textContent;
+        const titleEl = itemEl.querySelector('.gallery-item-title') || itemEl.querySelector('.mobile-stack-title');
+        const categoryEl = itemEl.querySelector('.gallery-item-category') || itemEl.querySelector('.mobile-stack-category');
+        
+        const title = titleEl ? titleEl.textContent : '';
+        const category = categoryEl ? categoryEl.textContent : '';
 
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
@@ -797,10 +851,18 @@ document.addEventListener('DOMContentLoaded', () => {
             targetScrollProgress = progress;
         }
 
+        let isImmersiveInView = false;
+        const immersiveObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isImmersiveInView = entry.isIntersecting;
+            });
+        }, { threshold: 0.01 });
+
+        immersiveObserver.observe(immersiveSection);
+
         function renderLoop() {
-            const rect = immersiveSection.getBoundingClientRect();
             // If the immersive section is completely off-screen, pause calculations
-            if (rect.bottom < 0 || rect.top > window.innerHeight) {
+            if (!isImmersiveInView) {
                 requestAnimationFrame(renderLoop);
                 return;
             }
@@ -866,7 +928,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     plane.element.style.visibility = 'hidden';
                 } else {
                     plane.element.style.visibility = 'visible';
-                    plane.element.style.filter = blur > 0.5 ? `blur(${blur}px)` : 'none';
+                    // Disable CSS blur filters on mobile devices (width < 768px) to run smoothly at 60fps
+                    const isMobile = window.innerWidth < 768;
+                    plane.element.style.filter = (!isMobile && blur > 0.5) ? `blur(${blur}px)` : 'none';
                 }
             });
 
@@ -879,5 +943,293 @@ document.addEventListener('DOMContentLoaded', () => {
         // Init
         updateScrollPosition();
         requestAnimationFrame(renderLoop);
+    }
+
+    // ==========================================
+    // 15. Mobile Gallery Vertical Stack Animation (Scroll-Driven)
+    // ==========================================
+    const mobileStackViewport = document.querySelector('.mobile-stack-viewport');
+    const mobileStickyWrapper = document.querySelector('.mobile-gallery-sticky-wrapper');
+
+    if (mobileStackViewport && mobileStickyWrapper) {
+        const cards = Array.from(mobileStackViewport.querySelectorAll('.mobile-stack-card'));
+        const dots = Array.from(document.querySelectorAll('.stack-dot'));
+        let currentIndex = 0;
+
+        function updateMobileStackScroll() {
+            // Only execute scroll-driven calculations on mobile screens
+            if (window.innerWidth >= 992) return;
+
+            const rect = mobileStickyWrapper.getBoundingClientRect();
+            const startY = rect.top + window.scrollY;
+            const scrollRange = rect.height - window.innerHeight;
+            const currentScroll = window.scrollY;
+
+            let progress = (currentScroll - startY) / scrollRange;
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Map scroll progress (0 to 1) to continuous activeIndex
+            const activeIndex = progress * (cards.length - 1);
+            
+            // Determine active index for dots/HUD counter
+            const targetIndex = Math.min(cards.length - 1, Math.round(activeIndex));
+
+            if (targetIndex !== currentIndex) {
+                currentIndex = targetIndex;
+                
+                // Update HUD counter
+                const currentNumEl = document.querySelector('.current-card-num');
+                if (currentNumEl) {
+                    currentNumEl.innerText = String(currentIndex + 1).padStart(2, '0');
+                }
+
+                // Update HUD dots
+                dots.forEach((dot, idx) => {
+                    if (idx === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            // Update card styles continuously based on progress
+            cards.forEach((card, index) => {
+                const total = cards.length;
+                let diff = index - activeIndex;
+
+                // Wrap indices for infinite visual rotation
+                if (diff > total / 2) diff -= total;
+                if (diff < -total / 2) diff += total;
+
+                let y = 0;
+                let z = 0;
+                let scale = 1;
+                let opacity = 1;
+                let rotateX = 0;
+                let visibility = 'visible';
+
+                const absDiff = Math.abs(diff);
+
+                if (absDiff <= 1) {
+                    const t = absDiff;
+                    const sign = diff >= 0 ? 1 : -1;
+                    y = sign * t * 150;
+                    z = t * -120;
+                    scale = 1 - t * 0.18;
+                    opacity = 1 - t * 0.35;
+                    rotateX = sign * t * -8;
+                } else if (absDiff <= 2) {
+                    const t = absDiff - 1;
+                    const sign = diff >= 0 ? 1 : -1;
+                    y = sign * (150 + t * 120);
+                    z = -120 + t * -120;
+                    scale = 0.82 - t * 0.14;
+                    opacity = 0.65 - t * 0.3;
+                    rotateX = sign * (-8 + t * -7);
+                } else {
+                    const sign = diff >= 0 ? 1 : -1;
+                    y = sign * 380;
+                    z = -360;
+                    scale = 0.6;
+                    opacity = 0;
+                    rotateX = sign * -20;
+                    visibility = 'hidden';
+                }
+
+                card.style.transform = `translate3d(0, ${y}px, ${z}px) scale(${scale}) rotateX(${rotateX}deg)`;
+                card.style.opacity = opacity;
+                card.style.zIndex = Math.round(5 - absDiff);
+                card.style.visibility = visibility;
+            });
+        }
+
+        // Add click events to mobile stack cards
+        cards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                if (index === currentIndex) {
+                    // Click on the active top card opens the lightbox
+                    const img = card.querySelector('img');
+                    const titleEl = card.querySelector('.mobile-stack-title');
+                    const categoryEl = card.querySelector('.mobile-stack-category');
+                    const title = titleEl ? titleEl.textContent : '';
+                    const category = categoryEl ? categoryEl.textContent : '';
+
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxTitle.textContent = title;
+                    lightboxCategory.textContent = category;
+
+                    // Configure lightbox state so prev/next and navigation functions work
+                    activeGalleryItems = cards;
+                    currentLightboxIndex = index;
+
+                    lightboxModal.classList.add('active');
+                    lightboxModal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Click on an inactive card brings it forward by scrolling the page
+                    const rect = mobileStickyWrapper.getBoundingClientRect();
+                    const startY = rect.top + window.scrollY;
+                    const scrollRange = rect.height - window.innerHeight;
+                    const targetScrollY = startY + (index / (cards.length - 1)) * scrollRange;
+
+                    window.scrollTo({
+                        top: targetScrollY,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Connect dot clicks to smooth-scroll the page to matching section progress offset
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const rect = mobileStickyWrapper.getBoundingClientRect();
+                const startY = rect.top + window.scrollY;
+                const scrollRange = rect.height - window.innerHeight;
+                const targetScrollY = startY + (index / (cards.length - 1)) * scrollRange;
+
+                window.scrollTo({
+                    top: targetScrollY,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        window.addEventListener('scroll', updateMobileStackScroll, { passive: true });
+        window.addEventListener('resize', updateMobileStackScroll, { passive: true });
+
+        // Initial render
+        updateMobileStackScroll();
+    }
+
+    // ==========================================
+    // 16. Services Carousel Drag and Auto-Scroll (Signature Services)
+    // ==========================================
+    const servicesWrapper = document.querySelector('.services-scroll-wrapper');
+    const servicesTrack = document.querySelector('.services-scroll-track');
+    
+    if (servicesWrapper && servicesTrack) {
+        let translateX = 0;
+        let speed = 0.8; // px per frame
+        let isDragging = false;
+        let startX = 0;
+        let startTranslateX = 0;
+        let animationId = null;
+        let isPaused = false;
+        let resumeTimeout = null;
+
+        // Determine group width for seamless wrapping
+        const firstGroup = servicesTrack.firstElementChild;
+        let groupWidth = firstGroup ? firstGroup.offsetWidth : 0;
+        
+        function updateGroupWidth() {
+            if (firstGroup && firstGroup.offsetWidth > 0) {
+                // include gap (32px)
+                groupWidth = firstGroup.offsetWidth + 32; 
+            }
+        }
+        updateGroupWidth();
+        window.addEventListener('resize', updateGroupWidth);
+
+        // Also check on load completed
+        window.addEventListener('load', updateGroupWidth);
+
+        function animate() {
+            // Recalculate if it was measured before elements fully rendered (e.g. returned 0 or small width)
+            if (groupWidth <= 100) {
+                updateGroupWidth();
+            }
+            if (!isDragging && !isPaused) {
+                translateX -= speed;
+                // Seamless wrap (only if groupWidth is valid and measured)
+                if (groupWidth > 100 && Math.abs(translateX) >= groupWidth) {
+                    translateX = 0;
+                }
+                servicesTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
+            }
+            animationId = requestAnimationFrame(animate);
+        }
+
+        // Initialize animation
+        animationId = requestAnimationFrame(animate);
+
+        // Drag/Swipe event handlers
+        function handleDragStart(clientX) {
+            isDragging = true;
+            isPaused = true;
+            if (resumeTimeout) clearTimeout(resumeTimeout);
+            startX = clientX;
+            startTranslateX = translateX;
+            servicesTrack.style.transition = 'none'; // Instant movement while dragging
+        }
+
+        function handleDragMove(clientX) {
+            if (!isDragging) return;
+            const dx = clientX - startX;
+            translateX = startTranslateX + dx;
+
+            // Handle wrap-around bounds during manual drag
+            if (translateX > 0) {
+                translateX -= groupWidth;
+            } else if (Math.abs(translateX) >= groupWidth) {
+                translateX += groupWidth;
+            }
+            servicesTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
+        }
+
+        function handleDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            // Resume scrolling after 1.5 seconds of inactivity
+            resumeTimeout = setTimeout(() => {
+                isPaused = false;
+            }, 1500);
+        }
+
+        // Mouse Events
+        servicesWrapper.addEventListener('mousedown', (e) => {
+            // Only drag if not clicking a link or button
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            e.preventDefault();
+            handleDragStart(e.clientX);
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            handleDragMove(e.clientX);
+        });
+
+        window.addEventListener('mouseup', () => {
+            handleDragEnd();
+        });
+
+        // Touch Events
+        servicesWrapper.addEventListener('touchstart', (e) => {
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            handleDragStart(e.touches[0].clientX);
+        }, { passive: true });
+
+        // Bind touchmove and touchend to track and window respectively
+        servicesWrapper.addEventListener('touchmove', (e) => {
+            handleDragMove(e.touches[0].clientX);
+        }, { passive: true });
+
+        servicesWrapper.addEventListener('touchend', () => {
+            handleDragEnd();
+        });
+
+        servicesWrapper.addEventListener('touchcancel', () => {
+            handleDragEnd();
+        });
+
+        // Resume scrolling on click anywhere on screen
+        document.addEventListener('click', () => {
+            if (isPaused && !isDragging) {
+                isPaused = false;
+                if (resumeTimeout) clearTimeout(resumeTimeout);
+            }
+        });
     }
 });

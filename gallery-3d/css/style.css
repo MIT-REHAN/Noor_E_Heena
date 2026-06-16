@@ -23,8 +23,8 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.15);
     background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
-    transition: transform 0.1s ease-out, opacity 0.3s ease-out, filter 0.3s ease-out, border-color 0.3s ease;
+    will-change: transform, opacity; /* Promote to layout layers for GPU-accelerated rendering */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Inner elements styling */

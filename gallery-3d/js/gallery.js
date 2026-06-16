@@ -110,10 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
         lastInteraction = Date.now();
     }, { passive: true });
 
+    // Touch support for mobile swipe
     window.addEventListener('touchmove', (e) => {
         const currentY = e.touches[0].clientY;
         const deltaY = touchStartY - currentY;
-        scrollVelocity += deltaY * 0.4;
+        // Slower touch sensitivity on mobile to make scrolling smooth and controllable
+        const sensitivity = window.innerWidth < 768 ? 0.08 : 0.4;
+        scrollVelocity += deltaY * sensitivity;
         touchStartY = currentY;
     }, { passive: true });
 
@@ -127,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (autoPlay) {
-            // Smooth persistent autoplay scroll velocity
-            scrollVelocity += (2.5 - scrollVelocity) * 0.05;
+            // Smooth persistent autoplay scroll velocity (slower on mobile to allow viewing)
+            const targetAutoSpeed = window.innerWidth < 768 ? 0.8 : 2.5;
+            scrollVelocity += (targetAutoSpeed - scrollVelocity) * 0.05;
         }
 
         // Apply friction/damping to scroll velocity
@@ -193,7 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 plane.element.style.visibility = 'hidden';
             } else {
                 plane.element.style.visibility = 'visible';
-                plane.element.style.filter = blur > 0.5 ? `blur(${blur}px)` : 'none';
+                // Disable heavy blur filters on mobile to ensure silky-smooth 60fps scrolling
+                const isMobile = window.innerWidth < 768;
+                plane.element.style.filter = (!isMobile && blur > 0.5) ? `blur(${blur}px)` : 'none';
             }
         });
 
