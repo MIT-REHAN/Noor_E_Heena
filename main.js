@@ -182,14 +182,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pad numbers to 3 digits (e.g. 1 -> "001")
         const makeFramePath = (index) => {
             const paddedNum = String(index).padStart(3, '0');
-            return `hero_landing_animations/ezgif-frame-${paddedNum}.jpg`;
+            // Safely resolve the base path to prevent trailing slash errors on hosting environments like GitHub Pages
+            let basePath = window.location.pathname;
+            if (!basePath.endsWith('/')) {
+                // If it ends with a file (e.g. index.html), remove the filename
+                if (basePath.includes('.')) {
+                    basePath = basePath.substring(0, basePath.lastIndexOf('/') + 1);
+                } else {
+                    basePath += '/';
+                }
+            }
+            return `${basePath}hero_landing_animations/ezgif-frame-${paddedNum}.jpg`;
         };
 
         // Resize handler to adjust logical dimensions without layout thrashing
         function resizeCanvas() {
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            canvas.width = Math.floor(canvas.clientWidth * dpr);
-            canvas.height = Math.floor(canvas.clientHeight * dpr);
+            const w = canvas.clientWidth || window.innerWidth || 800;
+            const h = canvas.clientHeight || window.innerHeight || 600;
+            canvas.width = Math.floor(w * dpr);
+            canvas.height = Math.floor(h * dpr);
         }
 
         // Pre-load all 40 frames
