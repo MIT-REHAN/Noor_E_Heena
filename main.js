@@ -10,16 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
         "Customized Event Mehendi": "Hello Noor_e_Heena,\n\nI would like to book a Customized Event Mehendi session.\n\nDescription: Bespoke artwork incorporating specific symbols, dates, quotes, names, or corporate brand elements.\nStarting Price: ₹ 2,999\n\nPlease let me know your availability."
     };
 
-    // Placeholder credentials (will be overwritten by env.json fetch)
+    // Default credentials (will be overwritten by env.json fetch if present)
     let ENV = {
-        PRIMARY_WHATSAPP: "+919999999999",
-        NOTIFICATION_WHATSAPP: "+919999999999",
-        BOOKING_EMAIL: "contact@nooreheena.com",
+        PRIMARY_WHATSAPP: "+919922757752",
+        NOTIFICATION_WHATSAPP: "+918600175623",
+        BOOKING_EMAIL: "rehan5.azim@gmail.com",
+        EMAIL_FORM_ENDPOINT: "https://formspree.io/f/rehan5.azim@gmail.com",
         INSTAGRAM_LINK: "https://www.instagram.com/nooor_e_heena/"
     };
 
-    // Load credentials from the git-ignored local env.json file
-    fetch('env.json')
+    // Safely resolve the base path to prevent trailing slash errors on hosting environments like GitHub Pages
+    let basePath = window.location.pathname;
+    if (!basePath.endsWith('/')) {
+        if (basePath.includes('.')) {
+            basePath = basePath.substring(0, basePath.lastIndexOf('/') + 1);
+        } else {
+            basePath += '/';
+        }
+    }
+
+    // Load credentials from the local env.json file
+    fetch(`${basePath}env.json`)
         .then(response => {
             if (!response.ok) throw new Error("Could not load env.json");
             return response.json();
