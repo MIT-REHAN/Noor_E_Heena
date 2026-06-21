@@ -1,10 +1,13 @@
 # Local environment config (contains private credentials)
 env.json
 node_modules/
-dist/
 build/
 .env
 .DS_Store
 .vscode/
 .idea/
 env.example.json
+
+# Allow Speed Insights bundle in dist
+dist/*
+!dist/speed-insights.min.js

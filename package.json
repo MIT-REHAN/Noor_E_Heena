@@ -1,0 +1,29 @@
+{
+  "name": "noor-e-heena",
+  "version": "1.0.0",
+  "description": "Noor_e_Heena - Premium Bridal & Custom Mehendi Artist Website",
+  "main": "main.js",
+  "scripts": {
+    "build:speed-insights": "esbuild speed-insights.js --bundle --outfile=dist/speed-insights.min.js --minify --format=esm",
+    "build": "npm run build:speed-insights",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MIT-REHAN/Noor_E_Heena.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MIT-REHAN/Noor_E_Heena/issues"
+  },
+  "homepage": "https://github.com/MIT-REHAN/Noor_E_Heena#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1",
+    "html-validate": "^11.5.3"
+  }
+}
